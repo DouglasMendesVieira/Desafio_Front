@@ -35,12 +35,12 @@
   <div class="row">
     <ng-container *ngFor="let item of productList">
       <div class="card col-md-3">
-        <img src="" alt="">
-        <h5>{{item.title}}</h5>
-        <p>{{item.price}}</p>
+        <img src="{{item.image}}" alt="">
+        <h5 class="itemdata">{{item.title}}</h5>
+        <p class="itemdata">{{item.description}}</p>
+        <p><strong>Price:</strong> R${{item.price}}</p>
         <p>{{item.category}}</p>
-        <p>{{item.description}}</p>
-        <button class="btn btn-primary">Add to cart</button>
+        <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
       </div>
     </ng-container>
   </div>
