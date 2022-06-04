@@ -10,9 +10,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   getProduct(){
-    //usar a API https://dummyjson.com/products/
-    //teste
-    return this.http.get("https://fakestoreapi.com/products/").pipe(map((res:any) =>{
+    return this.http.get("https://dummyjson.com/products/").pipe(map((res:any) =>{
       return res;
     }))
   }

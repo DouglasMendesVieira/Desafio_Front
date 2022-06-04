@@ -15,12 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     ProductsComponent,
     CartComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

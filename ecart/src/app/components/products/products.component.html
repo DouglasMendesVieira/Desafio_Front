@@ -1,47 +1,205 @@
+<!-- Botôes de pesquisa por filtros -->
 <div class="cart-top container-fluid">
   <div class="container d-flex">
     <div class="items">
       <a>
         <img style="width: 80%"
           src="https://rukminim1.flixcart.com/image/416/416/jxxkvww0/vehicle-pull-along/h/h/x/https-rukminim1-flixcart-com-image-832-832-jfoac280-vehicle-pull-original-imafg3meg5e9qfp2.jpeg?q=70">
-        <h6>All Products</h6>
+        <br><br>
+        <button class="btn btn-primary" (click)="filterValue = 1">Smartphones</button>
       </a>
     </div>
     <div class="items">
       <a>
         <img style="width: 80%"
           src="https://rukminim1.flixcart.com/image/416/416/jxxkvww0/vehicle-pull-along/h/h/x/https-rukminim1-flixcart-com-image-832-832-jfoac280-vehicle-pull-original-imafg3meg5e9qfp2.jpeg?q=70">
-        <h6>All Products</h6>
+        <br><br>
+        <button class="btn btn-primary" (click)="filterValue = 2">Laptops</button>
       </a>
     </div>
     <div class="items">
       <a>
         <img style="width: 80%"
           src="https://rukminim1.flixcart.com/image/416/416/jxxkvww0/vehicle-pull-along/h/h/x/https-rukminim1-flixcart-com-image-832-832-jfoac280-vehicle-pull-original-imafg3meg5e9qfp2.jpeg?q=70">
-        <h6>All Products</h6>
+        <br><br>
+        <button class="btn btn-primary" (click)="filterValue = 3">Fragrances</button>
       </a>
     </div>
     <div class="items">
       <a>
         <img style="width: 80%"
           src="https://rukminim1.flixcart.com/image/416/416/jxxkvww0/vehicle-pull-along/h/h/x/https-rukminim1-flixcart-com-image-832-832-jfoac280-vehicle-pull-original-imafg3meg5e9qfp2.jpeg?q=70">
-        <h6>All Products</h6>
+        <br><br>
+        <button class="btn btn-primary" (click)="filterValue = 4">Skincare</button>
+      </a>
+    </div>
+    <div class="items">
+      <a>
+        <img style="width: 80%"
+          src="https://rukminim1.flixcart.com/image/416/416/jxxkvww0/vehicle-pull-along/h/h/x/https-rukminim1-flixcart-com-image-832-832-jfoac280-vehicle-pull-original-imafg3meg5e9qfp2.jpeg?q=70">
+        <br><br>
+        <button class="btn btn-primary" (click)="filterValue = 5">Groceries</button>
+      </a>
+    </div>
+    <div class="items">
+      <a>
+        <img style="width: 80%"
+          src="https://rukminim1.flixcart.com/image/416/416/jxxkvww0/vehicle-pull-along/h/h/x/https-rukminim1-flixcart-com-image-832-832-jfoac280-vehicle-pull-original-imafg3meg5e9qfp2.jpeg?q=70">
+        <br><br>
+        <button class="btn btn-primary" (click)="filterValue = 6">Home-Decoration</button>
+      </a>
+    </div>
+    <div class="items">
+      <a>
+        <img style="width: 80%"
+          src="https://rukminim1.flixcart.com/image/416/416/jxxkvww0/vehicle-pull-along/h/h/x/https-rukminim1-flixcart-com-image-832-832-jfoac280-vehicle-pull-original-imafg3meg5e9qfp2.jpeg?q=70">
+        <br><br>
+        <button class="btn btn-primary" (click)="filterValue = 7">Lower Price</button>
       </a>
     </div>
   </div>
 </div>
 
+<!-- Listar todos os produtos -->
 <div class="container">
   <div class="row">
-    <ng-container *ngFor="let item of productList">
-      <div class="card col-md-3">
-        <img src="{{item.image}}" alt="">
-        <h5 class="itemdata">{{item.title}}</h5>
-        <p class="itemdata">{{item.description}}</p>
-        <p><strong>Price:</strong> R${{item.price}}</p>
-        <p>{{item.category}}</p>
-        <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
-      </div>
+    <ng-container *ngIf="filterValue == 0">
+      <ng-container *ngFor="let item of productList">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Filtrar produtos do tipo Smartphones -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="filterValue == 1">
+      <ng-container *ngFor="let item of findSmartphones(productList)">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Filtrar produtos do tipo Laptops -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="filterValue == 2">
+      <ng-container *ngFor="let item of findLaptops(productList)">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Filtrar produtos do tipo Fragrances -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="filterValue == 3">
+      <ng-container *ngFor="let item of findFragrances(productList)">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Filtrar produtos do tipo Skincare -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="filterValue == 4">
+      <ng-container *ngFor="let item of findSkincare(productList)">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Filtrar produtos do tipo Groceries -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="filterValue == 5">
+      <ng-container *ngFor="let item of findGroceries(productList)">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Filtrar produtos do tipo Home-Decoration -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="filterValue == 6">
+      <ng-container *ngFor="let item of findHomeDecoration(productList)">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Filtrar por menor preço -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="filterValue == 7">
+      <ng-container *ngFor="let item of lowerPrice(productList)">
+        <div class="card col-md-3">
+          <img src="{{item.thumbnail}}" alt="">
+          <h5 class="itemdata">{{item.title}}</h5>
+          <p class="itemdata">{{item.description}}</p>
+          <p><strong>Price:</strong> R${{item.price}}</p>
+          <p>{{item.category}}</p>
+          <button class="btn btn-primary" (click)="addtoCart(item)">Add to cart</button>
+        </div>
+      </ng-container>
     </ng-container>
   </div>
 </div>
