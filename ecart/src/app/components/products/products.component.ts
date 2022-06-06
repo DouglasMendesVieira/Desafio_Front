@@ -11,6 +11,7 @@ export class ProductsComponent implements OnInit {
 
   filterValue = 0;
   productList:any;
+
   constructor(private api:ApiService, private cartApi: CartapiService) { }
 
   ngOnInit(): void {

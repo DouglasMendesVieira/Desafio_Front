@@ -1,5 +1,9 @@
-.form-control {
-  border-radius: 5px;
-  margin-left: 25x;
-  width: 100%;
+.navbar {
+  background: #415aca;
+  padding: 0.2%;
+}
+
+.btn {
+  background: #415aca;
+  border: 1px solid white;
 }

@@ -4,6 +4,10 @@
   padding: 25px;
 }
 
+.container {
+  padding: 50px;
+}
+
 .center {
   top: 50%;
   left: 50%;
@@ -16,8 +20,8 @@
   color: inherit;
   border: none;
   outline: none;
-  width: 160px;
-  height: 75px;
+  width: 320px;
+  height: 250px;
   text-decoration: none;
   margin: 20px 0px;
 }
@@ -28,7 +32,7 @@
   position: relative;
   word-wrap: break-word;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #415aca;
   border-radius: .25rem;
   flex-direction: column;
 }
@@ -39,4 +43,35 @@
   font-weight: 400;
   padding: 10px 70px;
   border-radius: 3px !important;
+}
+
+.btnshop {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 17px;
+  outline: none;
+  border: 1px solid white;
+  cursor: pointer;
+  color: white;
+  border-radius: 3px;
+  font-weight: bold;
+  background-color: #415aca;
+}
+
+.btnshop:hover {
+  background-color: white;
+  border: 1px solid #415aca;
+  color: #415aca;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 17px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
 }

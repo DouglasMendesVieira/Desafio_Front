@@ -11,7 +11,7 @@
               <th>Description</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th>Total</th>
+              <th>Value</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -29,9 +29,9 @@
             </tr>
             <tr>
               <td colspan="4"></td>
-              <td><button (click)="removeAllProduct()" class="btn btn-danger">Empty Cart</button></td>
-              <td><button routerLink="/products" class="btn btn-warning">Shop More</button></td>
-              <td><button class="btn btn-success">Check out</button></td>
+              <td><button (click)="removeAllProduct()" class="btn btn-danger">Esvaziar carrinho</button></td>
+              <td><button routerLink="/products" class="btn btn-warning">Comprar Mais</button></td>
+              <td><button class="btn btn-success">Finalizar Compra</button></td>
               <td><strong>Total: R${{allProducts}}</strong></td>
             </tr>
           </tbody>
@@ -44,15 +44,13 @@
 <ng-container *ngIf="products.length == 0">
   <div class="container">
     <div class="card">
-      <h4 class="card-title"> My cart</h4>
+      <h4 class="card-title">Meu carrinho</h4>
     </div>
     <div class="center">
-      <img
-        src="https://media.istockphoto.com/vectors/empty-shopping-bag-icon-cute-disappointed-shopping-bag-flat-thin-line-vector-id841884438?k=20&m=841884438&s=612x612&w=0&h=yi6txQa52uAXEaKRLuijrmzYAT8GQrrv8NhHSD7lMOE="
-        alt="">
-      <h5>Your Cart is empty!</h5>
-      <h6>Add item to it now</h6>
-      <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+      <img src="../../../assets/shoptime.jpg" alt="">
+      <h5>O seu carrinho está vazio!</h5>
+      <h6>Adicionar produtos a ele agora</h6>
+      <button routerLink="/products" class="btnshop">Comprar Agora</button>
     </div>
   </div>
 </ng-container>
