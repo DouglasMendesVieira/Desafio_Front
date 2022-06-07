@@ -1,14 +1,21 @@
-.cart-top {
+.filters {
   display: flex;
   min-width: 0;
   word-wrap: break-word;
   background-color: #415aca;
   background-clip: border-box;
   position: relative;
-  flex-direction: column;
+  padding: 15px 300px;
 }
 
 .items {
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
   margin: 15px 15px;
   text-align: center;
 }
@@ -21,8 +28,12 @@
 }
 
 .card {
+  list-style: none;
+  display: grid;
   padding: 20px;
-  margin: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .card img {
@@ -33,7 +44,7 @@
   transition: 0.3s ease-in-out;
   display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
 }
 
 .card img:hover {

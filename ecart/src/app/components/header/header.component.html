@@ -1,4 +1,36 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header>
+    <a href="#" class="logo">Douglas's Store</a>
+    <ul class="navigation">
+      <li><a routerLink="/products">Início</a></li>
+      <li><a routerLink="cart">Carrinho</a></li>
+    </ul>
+    <div class="navbar navbar-dark">
+      <button routerLink="cart" class="btn btn-primary">
+        <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+        <div class="badge bg-danger">{{totalItemNumber}}</div>
+      </button>
+    </div>
+  </header>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- <header>
   <div class="navbar navbar-dark border-bottom">
     <div class="navbar-brand align-item-center d-flex">
       <i style="font-size: 35px" class='fas fa-shipping-fast'></i> &nbsp; &nbsp;
@@ -9,4 +41,4 @@
       <div class="badge bg-danger">{{totalItemNumber}}</div>
     </button>
   </div>
-</header>
+</header> -->

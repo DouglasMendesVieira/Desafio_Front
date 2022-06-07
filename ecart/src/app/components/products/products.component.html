@@ -1,172 +1,186 @@
 <!-- Botôes de pesquisa por filtros -->
-<div class="cart-top container-fluid">
-  <div class="container d-flex">
-    <div class="items">
-      <button class="btn btn-primary" (click)="filterValue = 1">Smartphones</button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <header>
+    <div class="filters">
+      <div class="items">
+        <button class="btn btn-primary" (click)="filterValue = 1">Smartphones</button>
+      </div>
+      <div class="items">
+        <button class="btn btn-primary" (click)="filterValue = 2">Laptops</button>
+      </div>
+      <div class="items">
+        <button class="btn btn-primary" (click)="filterValue = 3">Fragrances</button>
+      </div>
+      <div class="items">
+        <button class="btn btn-primary" (click)="filterValue = 4">Skincare</button>
+      </div>
+      <div class="items">
+        <button class="btn btn-primary" (click)="filterValue = 5">Groceries</button>
+      </div>
+      <div class="items">
+        <button class="btn btn-primary" (click)="filterValue = 6">Decoration</button>
+      </div>
+      <div class="items">
+        <button class="btn btn-primary" (click)="filterValue = 7">Lower Price</button>
+      </div>
     </div>
-    <div class="items">
-      <button class="btn btn-primary" (click)="filterValue = 2">Laptops</button>
+  </header>
+  <!-- Listar todos os produtos -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 0">
+        <ng-container *ngFor="let item of productList">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do
+              produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-    <div class="items">
-      <button class="btn btn-primary" (click)="filterValue = 3">Fragrances</button>
+  </div>
+
+
+  <!-- Filtrar produtos do tipo Smartphones -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 1">
+        <ng-container *ngFor="let item of findSmartphones(productList)">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-    <div class="items">
-      <button class="btn btn-primary" (click)="filterValue = 4">Skincare</button>
+  </div>
+
+  <!-- Filtrar produtos do tipo Laptops -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 2">
+        <ng-container *ngFor="let item of findLaptops(productList)">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-    <div class="items">
-      <button class="btn btn-primary" (click)="filterValue = 5">Groceries</button>
+  </div>
+
+  <!-- Filtrar produtos do tipo Fragrances -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 3">
+        <ng-container *ngFor="let item of findFragrances(productList)">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-    <div class="items">
-      <button class="btn btn-primary" (click)="filterValue = 6">Decoration</button>
+  </div>
+
+  <!-- Filtrar produtos do tipo Skincare -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 4">
+        <ng-container *ngFor="let item of findSkincare(productList)">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-    <div class="items">
-      <button class="btn btn-primary" (click)="filterValue = 7">Lower Price</button>
+  </div>
+
+  <!-- Filtrar produtos do tipo Groceries -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 5">
+        <ng-container *ngFor="let item of findGroceries(productList)">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
-</div>
 
-<!-- Listar todos os produtos -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 0">
-      <ng-container *ngFor="let item of productList">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do
-            produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
+  <!-- Filtrar produtos do tipo Home-Decoration -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 6">
+        <ng-container *ngFor="let item of findHomeDecoration(productList)">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
       </ng-container>
-    </ng-container>
+    </div>
   </div>
-</div>
 
-
-<!-- Filtrar produtos do tipo Smartphones -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 1">
-      <ng-container *ngFor="let item of findSmartphones(productList)">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
+  <!-- Filtrar por menor preço -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="filterValue == 7">
+        <ng-container *ngFor="let item of lowerPrice(productList)">
+          <div class="card col-md-3">
+            <img src="{{item.thumbnail}}" alt="">
+            <h5 class="itemdata">{{item.title}}</h5>
+            <p class="itemdata">{{item.description}}</p>
+            <p><strong>Price:</strong> R${{item.price}}</p>
+            <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
+            <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
+          </div>
+        </ng-container>
       </ng-container>
-    </ng-container>
+    </div>
   </div>
-</div>
 
-<!-- Filtrar produtos do tipo Laptops -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 2">
-      <ng-container *ngFor="let item of findLaptops(productList)">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
-</div>
+</body>
 
-<!-- Filtrar produtos do tipo Fragrances -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 3">
-      <ng-container *ngFor="let item of findFragrances(productList)">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
-</div>
-
-<!-- Filtrar produtos do tipo Skincare -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 4">
-      <ng-container *ngFor="let item of findSkincare(productList)">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
-</div>
-
-<!-- Filtrar produtos do tipo Groceries -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 5">
-      <ng-container *ngFor="let item of findGroceries(productList)">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
-</div>
-
-<!-- Filtrar produtos do tipo Home-Decoration -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 6">
-      <ng-container *ngFor="let item of findHomeDecoration(productList)">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
-</div>
-
-<!-- Filtrar por menor preço -->
-<div class="container">
-  <div class="row">
-    <ng-container *ngIf="filterValue == 7">
-      <ng-container *ngFor="let item of lowerPrice(productList)">
-        <div class="card col-md-3">
-          <img src="{{item.thumbnail}}" alt="">
-          <h5 class="itemdata">{{item.title}}</h5>
-          <p class="itemdata">{{item.description}}</p>
-          <p><strong>Price:</strong> R${{item.price}}</p>
-          <button routerLink="/details/{{item.id}}" class="btn btn-primary">Detalhes do produto</button>
-          <button class="btn btn-primary" (click)="addtoCart(item)">Adicionar ao carrinho</button>
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
-</div>
+</html>
